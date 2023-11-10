@@ -48,7 +48,7 @@ describe('test of app', () => {
   it('should reject with an error message when the file cannot be read', async () => {
     return app.readFiles('/Users/knelia/DEV010-md-links/prueba.md')
       .then(() => {
-        expect(true).toBe(false);
+        expect(true).toBeFalsy(false);
       })
       .catch((error) => {
         expect(error instanceof Error).toEqual(false);
