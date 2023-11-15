@@ -2,7 +2,6 @@ const path = require('path');
 const app = require('../lib/components/app.js');
 const validateLink = ('..lib/components/validate.js')
 
-
 jest.mock('path', () => ({
   resolve: (filePath) => `/mocked/absolute/path/${filePath}`,
   isAbsolute: jest.fn(),

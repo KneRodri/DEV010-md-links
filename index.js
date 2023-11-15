@@ -14,7 +14,7 @@ mdLinks("./lib/examples/prueba.md", true)
   .catch((error) => {
     console.error(error);
   })
-mdLinks("./lib/examples/README.md", false)
+mdLinks("./lib/examples/READMEprueba.md", false)
   .then(links => {
     console.table(links);
   })
