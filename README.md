@@ -34,3 +34,25 @@ mdLinks('./path/to/file.md', { validate: true })
     .catch((error) => {
         console.error(error);
     });
+
+## API
+
+`mdLinks(filePath, options)`
+
+Parámetros: 
+
+.  `filePath` (String): Ruta al archivo Markdown.
+.  `options` (Object):
+    .  `validate` (Booleand, opcional): Si se debe validar el estado de los enalces.
+    
+    Retorna: 
+
+    .  Una promesa que resuelve un array de objetos representand los enlaces.
+
+## Contribuyentes
+
+.  Knelia Rodríguez
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para obtener más detalles
