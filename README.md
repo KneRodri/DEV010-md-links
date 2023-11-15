@@ -1,4 +1,4 @@
-# md-links-kr
+# md-links-kr(thumb.png)
 
 ## Descripción
 
@@ -41,17 +41,17 @@ mdLinks('./path/to/file.md', { validate: true })
 
 Parámetros: 
 
-.  `filePath` (String): Ruta al archivo Markdown.
-.  `options` (Object):
-    .  `validate` (Booleand, opcional): Si se debe validar el estado de los enalces.
+- `filePath` (String): Ruta al archivo Markdown.
+- `options` (Object):
+  - `validate` (Booleand, opcional): Si se debe validar el estado de los enalces.
     
     Retorna: 
 
-    .  Una promesa que resuelve un array de objetos representand los enlaces.
+    - Una promesa que resuelve un array de objetos representand los enlaces.
 
 ## Contribuyentes
 
-.  Knelia Rodríguez
+- Knelia Rodríguez
 
 ## Licencia
 
