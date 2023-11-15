@@ -34,7 +34,7 @@ mdLinks('./path/to/file.md', { validate: true })
     .catch((error) => {
         console.error(error);
     });
-
+```
 ## API
 
 `mdLinks(filePath, options)`
