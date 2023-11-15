@@ -2,7 +2,7 @@
 
 ## Descripción
 
-`md-links-kr` es una biblioteca que analiza archivos Markdown para extraer y validar enlaces. Puede utilizarse para obtener una lista de enlaces presentes en un archivo Markdown y, opcionalmente, validar su estado.
+`md-links-kr` Es una biblioteca que analiza archivos Markdown para extraer y validar enlaces. Puede utilizarse para obtener una lista de enlaces presentes en un archivo Markdown y, opcionalmente, validar su estado.
 
 ## Instalación
 
@@ -10,13 +10,27 @@ Para instalar la librería, asegúrate de tener Node.js instalado en tu sistema 
 
 ```bash
 npm install -g md-links-kr
+```
 
 ## Uso
 
 Desde la línea de comandos
-
+```bash
 md-links <archivo.md> [--validate] [--stats]
-
+```
 .  `<archivo.md>`: Ruta al archivo Markdown que deseas analizar.
 .  `--validate`: Opción para validar el estado de los enlaces.
 .  `--stats`: Opción para obtener estadísticas básicas de los enlaces.
+
+## Desde JavaScript
+
+```javascript
+const mdLinks = require('md-links-kr');
+
+mdLinks('./path/to/file.md', { validate: true })
+    .the((links) => {
+        console.table(links);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
