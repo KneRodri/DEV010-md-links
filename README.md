@@ -1,4 +1,6 @@
-# md-links-kr(thumb.png)
+![archivo-imagen](thumb.png)
+
+# md-links-kr
 
 ## Descripción
 
