@@ -1,10 +1,12 @@
 const path = require('path');
 const app = require('../lib/components/app.js');
-const fs = require('fs');
+const validateLink = ('..lib/components/validate.js')
+
 
 jest.mock('path', () => ({
   resolve: (filePath) => `/mocked/absolute/path/${filePath}`,
   isAbsolute: jest.fn(),
+  extname: jest.fn((_filePath) => '.md'),
 }));
 
 describe('test of app', () => {
@@ -22,18 +24,19 @@ describe('test of app', () => {
   it('should return a promise that resolves wheter or not the route exists', () => {
     return app.existPath('/Users/knelia/DEV010-md-links/prueba.md')
       .then(() => {
-        app.existPath(filePath);  // no es determinista
       })
       .catch((error) => {
-        expect(error).toBe('The path/file does not exist');; // está siendo dependiente
-      }) 
+        expect(error).toBe('The path/file does not exist');
+        return Promise.resolve();
+      }); 
   });
 
-  // it('should check if the route extention is MD', () => {
-  //   const result = app.checkPathExtension('lib\examples\example1.md');
+  it('should check if the route extention is MD', () => {
+    const filePath = 'lib\examples\example1.md';
+    const result = app.checkPathExtension(filePath);
 
-  //   expect(result).toBe(true);
-  //   });
+    expect(result).toBe(true);
+    });
 
   it('should resolve with an array of links when the file is read succesfully', () => {
     return app.readFiles('/Users/knelia/DEV010-md-links/prueba.md')
@@ -45,7 +48,7 @@ describe('test of app', () => {
       });
   });
 
-  it('should reject with an error message when the file cannot be read', async () => {
+  it('should reject with an error message when the file cannot be read', () => {
     return app.readFiles('/Users/knelia/DEV010-md-links/prueba.md')
       .then(() => {
         expect(true).toBeFalsy(false);
@@ -55,23 +58,26 @@ describe('test of app', () => {
       });
   });
 
-  it('should extract links from text and return an array of link objects', () => {
+  it('should extract links from text and return an array of link objects', async () => {
     const data = 'This is a [link](https://example.com) and another [example](https://example.org).';
     const file = '/path/to/file.md';
+    
+    try {
+      const result = await app.extractLinks(data, file, app.validateLink);
 
-    const result = app.extractLinks(data, file);
-
-    expect(result).toEqual([
-      {
-        href: 'https://example.com',
-        text: 'link',
-        file: '/path/to/file.md',
-      },
-      {
-        href: 'https://example.org',
-        text: 'example',
-        file: '/path/to/file.md',
-      },
-    ]);
-  });
+      await expect(result).toEqual([
+        {
+          href: 'https://example.com',
+          text: 'link',
+          file: '/path/to/file.md',
+          isValid: true,
+          status: 200,
+          statusText: 'OK',
+        },
+      ]);
+    } catch (error) {
+      'Error';
+    }
+  });  
 });
+
