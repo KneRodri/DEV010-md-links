@@ -4,7 +4,7 @@
 
 ## Descripción
 
-`md-links-kr` Es una biblioteca que analiza archivos Markdown para extraer y validar enlaces. Puede utilizarse para obtener una lista de enlaces presentes en un archivo Markdown y, opcionalmente, validar su estado.
+`md-links-kr` Es una librería que analiza archivos Markdown para extraer y validar enlaces. Puede utilizarse para obtener una lista de enlaces presentes en un archivo Markdown y, opcionalmente, validar su estado.
 
 ## Instalación
 

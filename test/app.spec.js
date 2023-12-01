@@ -1,6 +1,6 @@
 const path = require('path');
 const app = require('../lib/components/app.js');
-const validateLink = ('..lib/components/validate.js')
+const validateLink = ('..lib/components/validate.js');
 
 jest.mock('path', () => ({
   resolve: (filePath) => `/mocked/absolute/path/${filePath}`,
@@ -62,7 +62,7 @@ describe('test of app', () => {
     const file = '/path/to/file.md';
     
     try {
-      const result = await app.extractLinks(data, file, app.validateLink);
+      const result = await app.extractLinks(data, file, validateLink);
 
       await expect(result).toEqual([
         {
